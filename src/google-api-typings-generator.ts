@@ -49,7 +49,7 @@ class StreamWriter implements ITextWriter {
     }
 }
 
-const excludedApi = ["replicapool", "replicapoolupdater"];
+const excludedApi = ["replicapool", "replicapoolupdater", "oslogin"];
 
 const irregylarSpaces = [
     /\u000B/g,// Line Tabulation (\v) - <VT>
@@ -539,7 +539,7 @@ export class App {
         if (version == null)
             return `gapi.client.${api}`;
         else
-            return path.join(`gapi.client.${api}`, version);
+            return (`gapi.client.${api}.${version}`);
     }
 
     private getTypingsDirectory(api: string, version: string) {
